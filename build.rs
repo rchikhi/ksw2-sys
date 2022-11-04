@@ -9,7 +9,9 @@ fn main() {
 
     Command::new("sed")
         .current_dir(&c_src_path)
+        .arg("-i")
         .arg("s/-g -Wall -Wextra -Wc++-compat -O2/ -g -Wall -Wextra -Wc++-compat -O2 -fPIC/g")
+        .arg("Makefile")
         .output()
         .expect("Failed to modify ksw2 makefile.");
 
