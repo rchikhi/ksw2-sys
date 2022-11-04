@@ -6,6 +6,8 @@ links = "ksw2"
 build = "build.rs"
 authors = ["Rayan Chikhi <rchikhi@pasteur.fr>"]
 repository = "https://github.com/rchikhi/ksw2-sys"
+description = "Rust bindings for the ksw2 sequence alignment library"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
