@@ -6,5 +6,5 @@ See https://github.com/rchikhi/rust-alignbench for an example usage
 
 # Command used to generate the bindings:
 
-`bindgen ../ksw2/ksw2.h  --allowlist-function "ksw_.*" > lib.rs`
+`cd src && bindgen ../ksw2/ksw2.h  --allowlist-function "ksw_.*" > lib.rs`
 

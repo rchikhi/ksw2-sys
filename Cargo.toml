@@ -4,6 +4,8 @@ version = "0.1.0"
 edition = "2021"
 links = "ksw2"
 build = "build.rs"
+authors = ["Rayan Chikhi <rchikhi@pasteur.fr>"]
+repository = "https://github.com/rchikhi/ksw2-sys"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
