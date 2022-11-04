@@ -7,6 +7,14 @@ fn main() {
     let num_jobs = env::var("NUM_JOBS").unwrap();
     let c_src_path = Path::new("ksw2");
 
+    Command::new("cp")
+        .current_dir(&c_src_path)
+        .arg("Makefile")
+        .arg("Makefile.old")
+        .output()
+        .expect("Failed to backup ksw2 makefile.");
+
+    // modify makefile to compile with -fPIC, required for rust
     Command::new("sed")
         .current_dir(&c_src_path)
         .arg("-i")
@@ -33,8 +41,9 @@ fn main() {
             .current_dir(&c_src_path)
             .output()
             .expect("Failed to copy ksw2 object files.");
-        }
-    
+    }
+
+    // package all .o files into a static library
     Command::new("sh")
         .arg("-c")
         .arg("ar rcs libksw2.a *.o")
@@ -48,6 +57,14 @@ fn main() {
         .arg("clean")
         .output()
         .expect("Failed to clean up ksw2 build files.");
+
+    Command::new("mv")
+        .current_dir(&c_src_path)
+        .arg("Makefile.old")
+        .arg("Makefile")
+        .output()
+        .expect("Failed to restore ksw2 makefile.");
+
 
     // let cargo know that it can find the file in the out directory
     println!("cargo:rustc-link-search=native={}", out_dir);
